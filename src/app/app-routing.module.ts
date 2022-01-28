@@ -4,8 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'users', component: UsersListComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'users', component: UsersListComponent },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

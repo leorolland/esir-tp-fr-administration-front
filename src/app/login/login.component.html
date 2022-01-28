@@ -1,8 +1,9 @@
 <div>
-    <label for="username">Email</label>
-    <input type="text" id="username" placeholder="username" />
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="password" />
-    <a (click)="login()"><button>Login</button></a>
-  </div>
+  <label for="username">Email</label>
+  <input type="text" id="username" placeholder="username" [attr.disabled]="waitingForResponse ? '' : null"/>
+  <label for="password">Password</label>
+  <input type="password" id="password" placeholder="password" [attr.disabled]="waitingForResponse ? '' : null"/>
+  <a (click)="login()"><button [attr.disabled]="waitingForResponse ? '' : null">Login</button></a>
+  <p *ngIf="waitingForResponse">Logging in...</p>
+</div>
   
