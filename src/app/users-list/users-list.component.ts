@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UsersService } from '../services/users.service';
 
 export class User {
   constructor(
@@ -22,11 +24,13 @@ const users: User[] = [
 export class UsersListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'lastname', 'firstname', 'age'];
-  dataSource = users;
+  
+  users: Observable<User[]> | undefined
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.users = this.usersService.getUsers()
   }
 
 }
