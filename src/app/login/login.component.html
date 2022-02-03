@@ -1,8 +1,8 @@
 <div>
   <label for="username">Email</label>
-  <input type="text" id="username" placeholder="username" [attr.disabled]="waitingForResponse ? '' : null"/>
+  <input type="text" id="username" placeholder="username" [attr.disabled]="waitingForResponse ? '' : null" (keyup.enter)="login()"/>
   <label for="password">Password</label>
-  <input type="password" id="password" placeholder="password" [attr.disabled]="waitingForResponse ? '' : null"/>
+  <input type="password" id="password" placeholder="password" [attr.disabled]="waitingForResponse ? '' : null" (keyup.enter)="login()"/>
   <a (click)="login()"><button [attr.disabled]="waitingForResponse ? '' : null">Login</button></a>
   <p *ngIf="waitingForResponse">Logging in...</p>
 </div>
