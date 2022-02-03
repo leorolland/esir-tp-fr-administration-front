@@ -2,6 +2,6 @@ import { User } from "./User";
 
 export type Association = {
     name: string,
-    date: Date,
+    dateOfCreation: string,
     members: Array<User>,
 }

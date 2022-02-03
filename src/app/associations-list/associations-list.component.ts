@@ -11,7 +11,7 @@ import { AssociationsService } from '../services/associations.service';
 
 export class AssociationsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'date', 'members'];  
+  displayedColumns: string[] = ['name', 'dateOfCreation', 'members'];  
   
   associations: Observable<Association[]> | undefined
 

@@ -10,11 +10,6 @@ export class User {
     public age: number,
   ) {}
 }
-const users: User[] = [
-  new User(0, 'Doe', 'John', 23),
-  new User(1, 'Doe', 'Jane', 32),
-]
-
 
 @Component({
   selector: 'app-users-list',
