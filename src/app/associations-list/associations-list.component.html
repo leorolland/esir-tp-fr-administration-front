@@ -1,4 +1,10 @@
-<table *ngIf="associations" mat-table [dataSource]="associations" class="mat-elevation-z8">
+<mat-form-field appearance="standard">
+  <mat-label>Rechercher</mat-label>
+  <input matInput (keyup)="applyFilter($event)">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> name </th>
       <td mat-cell *matCellDef="let association"> {{association.name}} </td>

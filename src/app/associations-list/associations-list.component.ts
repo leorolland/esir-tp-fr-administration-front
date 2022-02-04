@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Association } from '../types/Association'
-import { Observable } from 'rxjs';
 import { AssociationsService } from '../services/associations.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-associations-list',
@@ -13,11 +12,17 @@ export class AssociationsListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'dateOfCreation', 'members'];  
   
-  associations: Observable<Association[]> | undefined
+  dataSource = new MatTableDataSource();
 
   constructor(private associationsService: AssociationsService) { }
 
   ngOnInit(): void {
-    this.associations = this.associationsService.getUsers();
+    this.associationsService.getUsers().subscribe(a => this.dataSource.data = a)
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

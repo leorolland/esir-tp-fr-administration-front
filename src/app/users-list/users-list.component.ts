@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { UsersService } from '../services/users.service';
-
-export class User {
-  constructor(
-    public id: number,
-    public lastname: string,
-    public firstname: string,
-    public age: number,
-  ) {}
-}
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-users-list',
@@ -19,13 +10,18 @@ export class User {
 export class UsersListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'lastname', 'firstname', 'age'];
-  
-  users: Observable<User[]> | undefined
+ 
+  dataSource = new MatTableDataSource();
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.users = this.usersService.getUsers()
+    this.usersService.getUsers().subscribe(u => this.dataSource.data = u)
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

@@ -1,4 +1,9 @@
-<table *ngIf="users" mat-table [dataSource]="users" class="mat-elevation-z8">
+<mat-form-field appearance="standard">
+  <mat-label>Rechercher</mat-label>
+  <input matInput (keyup)="applyFilter($event)">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> id </th>
