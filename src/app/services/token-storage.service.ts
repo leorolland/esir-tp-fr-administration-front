@@ -10,10 +10,11 @@ export class TokenStorageService {
   public clear(): void {
     localStorage.clear();
   }
-  public save(token: string): void {
+  public save(token: string, id: string): void {
     localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(USERNAME_KEY );
+    localStorage.removeItem(USERNAME_KEY);
     localStorage.removeItem(IS_LOGGED_IN);
+    localStorage.setItem(USERNAME_KEY, id);
     localStorage.setItem(TOKEN_KEY, token);
     localStorage.setItem(IS_LOGGED_IN, IS_LOGGED);
   }
@@ -23,5 +24,10 @@ export class TokenStorageService {
   }
   public isLogged(): boolean {
     return (Boolean)(localStorage.getItem(IS_LOGGED_IN));
+  }
+  public getUsernameKey(): number {
+    const username = localStorage.getItem(USERNAME_KEY)
+    if (this.isLogged() && username) return parseInt(username)
+    else throw Error("No IS_LOGGED_IN or USERNAME_KEY defined in localStorage")
   }
 }

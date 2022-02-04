@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.waitingForResponse = true;
     this.api.post({endpoint: '/auth/login', data: { username, password },})
       .catch(e => alert(e.message))
-      .then(response => this.tokenStorageService.save(response.access_token))
+      .then(response => this.tokenStorageService.save(response.access_token, username))
       .then(() => {
         if (this.tokenStorageService.isLogged()) {
           this.router.navigateByUrl('/users')

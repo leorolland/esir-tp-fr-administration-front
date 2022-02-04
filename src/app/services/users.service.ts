@@ -15,4 +15,16 @@ export class UsersService {
     return this.http.get<User[]>(`${BASE_URL}/users`)
   }
 
+  getById(id: number): Observable<User> {
+    return this.http.get<User>(`${BASE_URL}/users/id/${id}`)
+  }
+
+  save(user: Partial<User>): Observable<User> {
+    if (user.id) {
+      return this.http.put<User>(`${BASE_URL}/users/${user.id}`, user)
+    } else {
+      return this.http.post<User>(`${BASE_URL}/users`, user)
+    }
+  }
+
 }
