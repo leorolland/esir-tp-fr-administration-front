@@ -19,7 +19,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatAutocompleteModule } from "@angular/material/autocomplete/";
 import { MatSnackBarModule } from "@angular/material/snack-bar/";
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatCardModule } from "@angular/material/card/";
+import { UserDetailComponent } from './user-detail/user-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     NavComponent,
     AssociationsListComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule
   ],
   providers: [
     {

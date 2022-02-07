@@ -1,0 +1,9 @@
+<button mat-button routerLink="..">Retour</button>
+<mat-card *ngIf="user | async as u">
+    <mat-card-subtitle>id: {{ u.id }}</mat-card-subtitle>
+    <mat-card-title>{{ u.firstname }} {{u.lastname}}</mat-card-title>
+    {{ u.age }} ans
+</mat-card>
+<div *ngIf="!user">
+    Loading user...
+</div>
