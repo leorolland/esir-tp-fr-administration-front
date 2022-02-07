@@ -21,6 +21,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar/";
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from "@angular/material/card/";
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { HomeComponent } from './home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     NavComponent,
     AssociationsListComponent,
     ProfileComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

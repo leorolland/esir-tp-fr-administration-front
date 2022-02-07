@@ -1,4 +1,13 @@
-<div>
-    <button (click)="logout()">Logout</button>
-</div>
+<ul id="left">
+    <img src="../../assets/marianne.png"/>
+    <li routerLinkActive="active" class="textual"><a routerLink="home">Accueil</a></li>
+    <li routerLinkActive="active" class="textual"><a routerLink="users">Utilisateurs</a></li>
+    <li routerLinkActive="active" class="textual"><a routerLink="associations">Associations</a></li>
+</ul>
+<ul id="right">
+    <li class="textual"><button (click)="logout()">Se déconnecter</button></li>
+    <li routerLinkActive="active" class="textual" id="account"><a routerLink="profile">Mon compte</a></li>
+</ul>
+
+
   
