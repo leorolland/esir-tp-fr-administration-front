@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 const TOKEN_KEY = 'token';
 const USERNAME_KEY = 'username';
 const IS_LOGGED_IN = 'isLoggedIn';
@@ -30,7 +30,7 @@ export class TokenStorageService {
     return (Boolean)(localStorage.getItem(IS_LOGGED_IN));
   }
 
-  public isLoggedObservable: Subject<boolean>=new Subject();
+  public isLoggedObservable: BehaviorSubject<boolean> = new BehaviorSubject(this.isLogged());
 
   public getUsernameKey(): number {
     const username = localStorage.getItem(USERNAME_KEY)
