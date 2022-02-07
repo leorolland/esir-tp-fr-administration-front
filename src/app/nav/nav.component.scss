@@ -1,0 +1,45 @@
+:host{
+  display: block;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.textual{
+  padding-top: 3.5vh;
+}
+
+#right li{
+  margin-right: 3vw;
+  float: right;
+}
+
+#left li{
+  margin-left: 3vw;
+  float: left;
+}
+
+img{
+  padding-left: 0.5vh;
+  padding-top: 0.5vh;
+  height: 9vh;
+  width: 15vh;
+  float: left;
+}
+
+button{
+  float: right;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(0,85,164);
+  text-transform: uppercase;
+}
+
+.active{
+  font-weight: bold;
+}
