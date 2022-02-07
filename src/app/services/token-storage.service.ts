@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 const TOKEN_KEY = 'token';
 const USERNAME_KEY = 'username';
 const IS_LOGGED_IN = 'isLoggedIn';
@@ -9,6 +10,7 @@ const IS_LOGGED = 'true';
 export class TokenStorageService {
   public clear(): void {
     localStorage.clear();
+    this.isLoggedObservable.next(false)
   }
   public save(token: string, id: string): void {
     localStorage.removeItem(TOKEN_KEY);
@@ -17,14 +19,19 @@ export class TokenStorageService {
     localStorage.setItem(USERNAME_KEY, id);
     localStorage.setItem(TOKEN_KEY, token);
     localStorage.setItem(IS_LOGGED_IN, IS_LOGGED);
+    this.isLoggedObservable.next(true)
   }
   public getToken(): string {
     const token = localStorage.getItem(TOKEN_KEY);
     return token === null ? '' : token;
   }
+
   public isLogged(): boolean {
     return (Boolean)(localStorage.getItem(IS_LOGGED_IN));
   }
+
+  public isLoggedObservable: Subject<boolean>=new Subject();
+
   public getUsernameKey(): number {
     const username = localStorage.getItem(USERNAME_KEY)
     if (this.isLogged() && username) return parseInt(username)

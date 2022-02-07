@@ -5,8 +5,8 @@
     <li routerLinkActive="active" class="textual"><a routerLink="associations">Associations</a></li>
 </ul>
 <ul id="right">
-    <li class="textual"><button (click)="logout()">Se déconnecter</button></li>
-    <li routerLinkActive="active" class="textual" id="account"><a routerLink="profile">Mon compte</a></li>
+    <li class="textual"><button (click)="log()">{{isLogged?"Se déconnecter":"Se connecter"}}</button></li>
+    <li *ngIf="isLogged" routerLinkActive="active" class="textual"><a routerLink="profile">Mon compte</a></li>
 </ul>
 
 

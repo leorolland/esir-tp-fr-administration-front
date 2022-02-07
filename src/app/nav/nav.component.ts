@@ -14,11 +14,15 @@ export class NavComponent implements OnInit {
   constructor(private tokenStorage: TokenStorageService, private route: Router) {  }
 
   ngOnInit(): void {
-    this.isLogged = this.tokenStorage.isLogged()
+    this.tokenStorage.isLoggedObservable.subscribe(r => this.isLogged = r)
   }
 
-  logout(): void {
-    this.tokenStorage.clear();
-    this.route.navigateByUrl("/login");
+  log(): void {
+    if(this.isLogged){
+      this.tokenStorage.clear();
+      this.route.navigateByUrl("/home");
+    } else {
+      this.route.navigateByUrl("/login");
+    }
   }
 }
