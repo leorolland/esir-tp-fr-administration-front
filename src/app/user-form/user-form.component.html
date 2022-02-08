@@ -1,0 +1,17 @@
+<form [formGroup]="profileGroup">
+    <mat-form-field appearance="fill">
+        <mat-label>Firstname</mat-label>
+        <input matInput type="text" formControlName="firstname"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Lastname</mat-label>
+        <input matInput type="text" formControlName="lastname"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" formControlName="age"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="profileGroup.disabled">
+       {{ profileGroup.disabled ? 'Envoi...' : 'Sauvegarder' }}
+    </button>
+</form>

@@ -28,7 +28,7 @@ import { MatBadgeModule } from "@angular/material/badge";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     UserDetailComponent,
     HomeComponent,
     AssociationDetailComponent,
+    UserFormComponent,
   ],
   imports: [
     MatDialogModule,
