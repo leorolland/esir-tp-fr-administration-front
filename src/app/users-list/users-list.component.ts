@@ -3,6 +3,7 @@ import { UsersService } from '../services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { User } from '../types/User';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +16,7 @@ export class UsersListComponent implements OnInit {
  
   dataSource = new MatTableDataSource();
 
-  constructor(private usersService: UsersService, public dialog: MatDialog) { }
+  constructor(private usersService: UsersService, public dialog: MatDialog, public snackbarService: MatSnackBar) { }
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(u => this.dataSource.data = u)
@@ -30,7 +31,9 @@ export class UsersListComponent implements OnInit {
     event.stopPropagation();
     this.dialog.open(DeleteDialog, {data : {firstname:user.firstname, lastname:user.lastname}}).afterClosed().subscribe(s => {
       if(s){
-        this.usersService.deleteUser(user.id).subscribe(() => this.usersService.getUsers().subscribe(u => this.dataSource.data = u))
+        this.usersService.deleteUser(user.id).subscribe(() => this.usersService.getUsers().subscribe(u => {
+          this.dataSource.data = u; 
+          this.snackbarService.open("Suppression effectuée", undefined, {verticalPosition: 'bottom', duration: 2000})}))
       }
     })
   }
