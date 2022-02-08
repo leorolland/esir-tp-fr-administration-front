@@ -23,6 +23,14 @@ export class NavComponent implements OnInit {
       this.route.navigateByUrl("/home");
     } else {
       this.route.navigateByUrl("/login");
+      this.playAudio()
     }
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/marseillaise.wav";
+    audio.load();
+    audio.play();
   }
 }
