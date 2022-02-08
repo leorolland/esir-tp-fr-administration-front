@@ -9,6 +9,10 @@ import { BASE_URL } from './baseUrl';
 })
 export class UsersService {
 
+  deleteUser(id: number):Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}/users/${id}`);
+  }
+
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {

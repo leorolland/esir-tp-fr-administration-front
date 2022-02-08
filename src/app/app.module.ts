@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsersListComponent } from './users-list/users-list.component';
+import { DeleteDialog, UsersListComponent } from './users-list/users-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from "@angular/material/table";
 import { LoginComponent } from './login/login.component';
@@ -32,6 +32,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
+    DeleteDialog,
     AppComponent,
     UsersListComponent,
     LoginComponent,

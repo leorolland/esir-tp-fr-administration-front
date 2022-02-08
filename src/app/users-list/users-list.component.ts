@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { User } from '../types/User';
 
 @Component({
   selector: 'app-users-list',
@@ -9,11 +11,11 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class UsersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'lastname', 'firstname', 'age'];
+  displayedColumns: string[] = ['id', 'lastname', 'firstname', 'age', 'delete'];
  
   dataSource = new MatTableDataSource();
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(u => this.dataSource.data = u)
@@ -24,4 +26,20 @@ export class UsersListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  onDeleteUser(event:MouseEvent, user:User){
+    event.stopPropagation();
+    this.dialog.open(DeleteDialog, {data : {firstname:user.firstname, lastname:user.lastname}}).afterClosed().subscribe(s => {
+      if(s){
+        this.usersService.deleteUser(user.id).subscribe(() => this.usersService.getUsers().subscribe(u => this.dataSource.data = u))
+      }
+    })
+  }
+}
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'dialog-elements-example-dialog.html',
+})
+export class DeleteDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {firstname:string, lastname:string}){}
 }

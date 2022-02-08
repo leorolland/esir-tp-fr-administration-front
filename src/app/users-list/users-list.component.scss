@@ -11,3 +11,26 @@ table {
 .mat-row {
     cursor: pointer;
 }
+
+.mat-column-id{
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-column-lastname{
+    flex: 0 0 35% !important;
+    width: 35% !important;
+}
+.mat-column-firstname{
+    flex: 0 0 35% !important;
+    width: 35% !important;
+}
+.mat-column-age{
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-column-delete{
+    flex: 0 0 5% !important;
+    width: 5% !important;
+}
