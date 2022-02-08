@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { User } from '../types/User';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit {
       if(s){
         this.usersService.deleteUser(user.id).subscribe(() => this.usersService.getUsers().subscribe(u => {
           this.dataSource.data = u; 
-          this.snackbarService.open("Suppression effectuée", undefined, {verticalPosition: 'bottom', duration: 2000})}))
+          this.snackbarService.open("🗑️ Suppression effectuée", undefined, {verticalPosition: 'bottom', duration: 2000})}))
       }
     })
   }
@@ -41,7 +41,7 @@ export class UsersListComponent implements OnInit {
 
 @Component({
   selector: 'dialog-elements-example-dialog',
-  templateUrl: 'dialog-elements-example-dialog.html',
+  templateUrl: 'dialog-elements-user-dialog.html',
 })
 export class DeleteDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: {firstname:string, lastname:string}){}

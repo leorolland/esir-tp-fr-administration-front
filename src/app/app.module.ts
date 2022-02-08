@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenHttpInterceptor } from './interceptors/token.interceptor';
 import { NavComponent } from './nav/nav.component';
-import { AssociationsListComponent } from './associations-list/associations-list.component';
+import { AssociationsListComponent, DeleteAssociationDialog } from './associations-list/associations-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,6 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     DeleteDialog,
+    DeleteAssociationDialog,
     AppComponent,
     UsersListComponent,
     LoginComponent,

@@ -8,6 +8,9 @@ import { BASE_URL } from './baseUrl';
   providedIn: 'root'
 })
 export class AssociationsService {
+  deleteAssociation(name: string):Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}/associations/${name}`)
+  }
 
   constructor(private http: HttpClient) { }
 
