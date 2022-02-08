@@ -1,7 +1,7 @@
-import { User } from "./User";
+import { MemberAssociation } from "./MemberAssociation";
 
 export type Association = {
     name: string,
     dateOfCreation: string,
-    members: Array<User>,
+    members: MemberAssociation[],
 }

@@ -1,0 +1,14 @@
+<button mat-button routerLink="..">Retour</button>
+<mat-card *ngIf="association | async as a">
+    <!-- <mat-card-subtitle>id: {{ u.id }}</mat-card-subtitle> -->
+    <mat-card-title>{{ a.name }}</mat-card-title>
+    Creation: {{ a.dateOfCreation }}
+    <ul>
+        <li *ngFor="let m of a.members">
+            <b>{{ m.role }} : </b>{{ m.firstname }} {{ m.lastname }}, {{ m.age }} ans
+        </li>
+    </ul>
+</mat-card>
+<div *ngIf="!association">
+    Loading user...
+</div>

@@ -17,7 +17,7 @@ export class AssociationsListComponent implements OnInit {
   constructor(private associationsService: AssociationsService) { }
 
   ngOnInit(): void {
-    this.associationsService.getUsers().subscribe(a => this.dataSource.data = a)
+    this.associationsService.getAll().subscribe(a => this.dataSource.data = a)
   }
 
   applyFilter(event: Event) {

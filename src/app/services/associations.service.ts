@@ -11,8 +11,12 @@ export class AssociationsService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<Association[]> {
+  getAll(): Observable<Association[]> {
     return this.http.get<Association[]>(`${BASE_URL}/associations`)
   }
 
+  getByName(name: string): Observable<Association> {
+    return this.http.get<Association>(`${BASE_URL}/associations/${name}`)
+  }
+  
 }

@@ -22,6 +22,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from "@angular/material/card/";
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { HomeComponent } from './home/home.component';
+import { AssociationDetailComponent } from './association-detail/association-detail.component';
+import { MatChipsModule } from "@angular/material/chips";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { HomeComponent } from './home/home.component';
     AssociationsListComponent,
     ProfileComponent,
     UserDetailComponent,
-    HomeComponent
+    HomeComponent,
+    AssociationDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,10 @@ import { HomeComponent } from './home/home.component';
     MatAutocompleteModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule,
+    MatBadgeModule,
+    MatTooltipModule
   ],
   providers: [
     {
