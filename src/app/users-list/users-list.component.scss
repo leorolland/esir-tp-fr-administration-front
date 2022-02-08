@@ -34,3 +34,17 @@ table {
     flex: 0 0 5% !important;
     width: 5% !important;
 }
+
+.top-container {
+    display: flex;
+}
+
+.search {
+    flex-grow: 1;
+}
+
+.newUser {
+    flex-grow: 1;
+    padding-top: 30px;
+    text-align: right;
+}

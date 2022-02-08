@@ -1,8 +1,17 @@
-<mat-form-field appearance="standard">
-  <mat-label>Rechercher</mat-label>
-  <input matInput (keyup)="applyFilter($event)">
-</mat-form-field>
-
+<h1>Liste des utilisateurs</h1>
+<div class="top-container">
+  <div class="search">
+    <mat-form-field appearance="standard">
+      <mat-label>Rechercher</mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+  </div>
+  <div class="newUser">
+    <button mat-raised-button color="primary" [routerLink]="['create']">
+      Nouvel utilisateur
+    </button>
+  </div>
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">

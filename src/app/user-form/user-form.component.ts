@@ -51,16 +51,26 @@ export class UserFormComponent implements OnInit {
 
   save(): void {
     this.profileGroup.disable()
-    this.usersService.save({
-      id: this.id,
-      ...this.profileGroup.value
-    }).subscribe(user => {
-      this.profileGroup.enable()
-      if (user) {
-        this.snackbarService.open("✔️ Mise à jour effectuée", undefined, {verticalPosition: 'top', duration: 2000})
-        if (!this.stayOnPage) this.location.back();
-      }
-    })
+    if (this.id && this.id >= 0) {
+      this.usersService.save({
+        id: this.id,
+        ...this.profileGroup.value
+      }).subscribe(user => {
+        this.profileGroup.enable()
+        if (user) {
+          this.snackbarService.open("✔️ Mise à jour effectuée", undefined, {verticalPosition: 'top', duration: 2000})
+          if (!this.stayOnPage) this.location.back();
+        }
+      })
+    } else {
+      this.usersService.save(this.profileGroup.value).subscribe(user => {
+        this.profileGroup.enable()
+        if (user) {
+          this.snackbarService.open("✔️ Utilisateur crée !", undefined, {verticalPosition: 'top', duration: 2000})
+          if (!this.stayOnPage) this.location.back();
+        }
+      })
+    }
   }
 
 }
