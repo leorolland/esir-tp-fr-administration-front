@@ -32,7 +32,7 @@ export class AssociationsListComponent implements OnInit {
     event.stopPropagation();
     this.dialog.open(DeleteAssociationDialog, {data : {firstname:assoc.name}}).afterClosed().subscribe(s => {
       if(s){
-        this.associationsService.deleteAssociation(assoc.name).subscribe(() => this.associationsService.getUsers().subscribe(u => {
+        this.associationsService.deleteAssociation(assoc.name).subscribe(() => this.associationsService.getAll().subscribe(u => {
           this.dataSource.data = u; 
           this.snackbarService.open("🗑️ Suppression effectuée", undefined, {verticalPosition: 'bottom', duration: 2000})}))
       }
