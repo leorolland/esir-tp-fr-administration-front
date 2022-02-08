@@ -26,6 +26,9 @@ import { AssociationDetailComponent } from './association-detail/association-det
 import { MatChipsModule } from "@angular/material/chips";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AssociationDetailComponent,
   ],
   imports: [
+    MatDialogModule,
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
