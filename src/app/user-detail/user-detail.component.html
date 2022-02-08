@@ -1,4 +1,5 @@
 <button mat-button routerLink="..">Retour</button>
+<button mat-button color="primary" routerLink="edit">Modifier l'utilisateur</button>
 <mat-card *ngIf="user | async as u">
     <mat-card-subtitle>id: {{ u.id }}</mat-card-subtitle>
     <mat-card-title>{{ u.firstname }} {{u.lastname}}</mat-card-title>

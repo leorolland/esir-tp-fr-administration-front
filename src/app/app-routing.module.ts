@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserFormComponent } from './user-form/user-form.component';
 import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'users', component: UsersListComponent, canActivate: [AuthGuard] },
   { path: 'users/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
+  { path: 'users/:id/edit', component: UserFormComponent, canActivate: [AuthGuard] },
   { path: 'associations', component: AssociationsListComponent, canActivate: [AuthGuard] },
   { path: 'associations/:name', component: AssociationDetailComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },

@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UsersService } from '../services/users.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
@@ -14,6 +15,8 @@ export class UserFormComponent implements OnInit {
 
   @Input() id: number | undefined;
 
+  @Input() stayOnPage: boolean | undefined;
+
   profileGroup = new FormGroup({
     firstname: new FormControl(""),
     lastname: new FormControl(""),
@@ -22,9 +25,9 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     private usersService: UsersService, 
-    private tokenStorageService: TokenStorageService,
     private snackbarService: MatSnackBar, 
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit(): void {
     // If no input is passed, check in route
@@ -55,6 +58,7 @@ export class UserFormComponent implements OnInit {
       this.profileGroup.enable()
       if (user) {
         this.snackbarService.open("✔️ Mise à jour effectuée", undefined, {verticalPosition: 'top', duration: 2000})
+        if (!this.stayOnPage) this.location.back();
       }
     })
   }
