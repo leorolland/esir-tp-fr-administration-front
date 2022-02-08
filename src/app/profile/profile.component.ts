@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UsersService } from '../services/users.service';
-import { User } from '../types/User';
 
 @Component({
   selector: 'app-profile',
