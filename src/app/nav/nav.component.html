@@ -1,13 +1,10 @@
 <ul id="left">
     <img src="../../assets/marianne.png"/>
-    <li routerLinkActive="active" class="textual"><a routerLink="home">Accueil</a></li>
-    <li routerLinkActive="active" class="textual"><a routerLink="users">Utilisateurs</a></li>
-    <li routerLinkActive="active" class="textual"><a routerLink="associations">Associations</a></li>
+    <li routerLinkActive="active" class="textual"><div><a routerLink="home">Accueil</a></div></li>
+    <li routerLinkActive="active" class="textual"><div><a routerLink="users">Utilisateurs</a></div></li>
+    <li routerLinkActive="active" class="textual"><div><a routerLink="associations">Associations</a></div></li>
 </ul>
 <ul id="right">
-    <li class="textual"><button (click)="log()">{{isLogged?"Se déconnecter":"Se connecter"}}</button></li>
-    <li *ngIf="isLogged" routerLinkActive="active" class="textual"><a routerLink="profile">Mon compte</a></li>
+    <li><div><button mat-raised-button color="primary" (click)="log()">{{isLogged?"Se déconnecter":"Se connecter"}}</button></div></li>
+    <li *ngIf="isLogged" routerLinkActive="active" class="textual"><div><a routerLink="profile">Mon compte</a></div></li>
 </ul>
-
-
-  
