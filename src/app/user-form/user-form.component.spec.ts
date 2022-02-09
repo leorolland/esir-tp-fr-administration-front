@@ -14,7 +14,6 @@ describe('UserFormComponent', () => {
   let params: Subject<Params> = new Subject<Params>()
 
   // Mock User
-  let usersService: UsersService;
   const mockUsersService = jasmine.createSpyObj('UsersService', ['getById', 'save']);
   const fakeUser = {
     "id": 2,
@@ -41,14 +40,13 @@ describe('UserFormComponent', () => {
         { provide: ActivatedRoute, useValue: { paramMap: params } }
       ]
     }).compileComponents()
-    params = new Subject<Params>()
-    usersService = TestBed.get(UsersService)
     fixture = TestBed.createComponent(UserFormComponent);
     component = fixture.componentInstance;
+    params = new Subject<Params>()
 
   });
   
-  it('should create with url id', fakeAsync(() => {;
+  it('should create with URL params', fakeAsync(() => {;
     params.next({ 'id': 2 })
     // this calls ngOnInit
     fixture.detectChanges();
@@ -57,23 +55,27 @@ describe('UserFormComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  it('should call load with url id', fakeAsync(() => {;
-    tick(500);
-    fixture.detectChanges();
-    tick(500);
-    params.next({ 'id': 2 })
-    tick(500);
-    // expect(component.load).toHaveBeenCalled()
-    // expect(usersService.getById).toHaveBeenCalledWith(2)
-  }));
-
-  it('should display the right data with url id', fakeAsync(() => {;
+  it('should call load', fakeAsync(() => {;
     params.next({ 'id': 2 })
     fixture.detectChanges();
-    tick(10);
-    // console.log(component.profileGroup.controls['firstname'].value)
-    // expect(component.profileGroup.controls['firstname'].value).toEqual(fakeUser.firstname)
+    tick();
+    expect(component.load).toHaveBeenCalled
   }));
 
+  it('should display the right data', fakeAsync(() => {;
+    params.next({ 'id': 2 })
+    fixture.detectChanges();
+    tick();
+    expect(component.load)
+  }));
+
+    
+  // it('should create with URL params a', fakeAsync(() => {;
+  //   // this calls ngOnInit
+  //   fixture.detectChanges();
+  //   // tick to make sure the async observable resolves
+  //   tick();
+  //   expect(component).toBeTruthy();
+  // }));
 
 });
