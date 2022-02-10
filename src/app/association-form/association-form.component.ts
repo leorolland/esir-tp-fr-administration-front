@@ -35,7 +35,23 @@ export class AssociationFormComponent implements AfterViewInit { //OnInit {
   //     this.members = m.members
   //   })
   // }
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent | undefined;
+  // association: Observable<Association> | undefined
+  // users: User[]| undefined
+  // members: MemberAssociation[] | undefined
+  // @Input() stayOnPage: boolean | undefined;
+  // constructor(private associationsService: AssociationsService, private usersService: UsersService, private route: ActivatedRoute) { }
+  // ngOnInit(): void {
+  //   this.route.paramMap.subscribe( res => {
+  //     const name = res.get('name') || ''
+  //     this.association = this.associationsService.getByName(name)
+  //   })
+  //   this.usersService.getUsers().subscribe(u => this.users = u)
+  //   this.association?.subscribe(m => {
+  //     this.members = m.members
+  //   })
+  // }
+  @ViewChild(DynamicFormComponent)
+  form!: DynamicFormComponent;
 
   config: FieldConfig[] = [
     {
@@ -61,16 +77,14 @@ export class AssociationFormComponent implements AfterViewInit { //OnInit {
   ];
 
   ngAfterViewInit() {
-    let previousValid = this.form?.valid;
-    this.form?.changes.subscribe(() => {
-      if (this.form?.valid !== previousValid) {
-        previousValid = this.form?.valid;
-        this.form?.setDisabled('submit', !previousValid);
+    let previousValid = this.form.valid;
+    this.form.changes.subscribe(() => {
+      if (this.form.valid !== previousValid) {
+        previousValid = this.form.valid;
+        this.form.setDisabled('submit', !previousValid);
       }
     });
-
-    this.form?.setDisabled('submit', true);
-    this.form?.setValue('name', 'Todd Motto');
+    this.form.setDisabled('submit', true);
   }
 
   submit(value: {[name: string]: any}) {

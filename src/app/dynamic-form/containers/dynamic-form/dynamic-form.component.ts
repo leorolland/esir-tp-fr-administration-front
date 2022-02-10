@@ -8,6 +8,7 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
   template: `
+    <h1> Le form est là</h1>
     <form
       class="dynamic-form"
       [formGroup]="form"
@@ -31,9 +32,9 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   form!: FormGroup;
 
   get controls() { return this.config.filter(({type}) => type !== 'button'); }
-  get changes() { return this.form?.valueChanges; }
-  get valid() { return this.form?.valid; }
-  get value() { return this.form?.value; }
+  get changes() { return this.form.valueChanges; }
+  get valid() { return this.form.valid; }
+  get value() { return this.form.value; }
 
   constructor(private fb: FormBuilder) {}
 
@@ -48,14 +49,14 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
       controls
         .filter((control) => !configControls.includes(control))
-        .forEach((control) => this.form?.removeControl(control));
+        .forEach((control) => this.form.removeControl(control));
 
       configControls
         .filter((control) => !controls.includes(control))
         .forEach((name) => {
           const config = this.config.find((control) => control.name === name);
           if (!config) return
-          this.form?.addControl(name, this.createControl(config));
+          this.form.addControl(name, this.createControl(config));
         });
 
     }
@@ -79,7 +80,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   setDisabled(name: string, disable: boolean) {
-    if (this.form?.controls[name]) {
+    if (this.form.controls[name]) {
       const method = disable ? 'disable': 'enable';
       this.form.controls[name][method]();
       return;
@@ -94,6 +95,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   setValue(name: string, value: any) {
-    this.form?.controls[name].setValue(value, {emitEvent: true});
+    console.log(name, " ", value)
+    this.form.controls[name].setValue(value, {emitEvent: true});
   }
 }
