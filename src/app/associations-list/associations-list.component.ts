@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Association } from '../types/Association';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-associations-list',
