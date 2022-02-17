@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssociationDetailComponent } from './association-detail/association-detail.component';
+import { AssociationFormComponent } from './association-form/association-form.component';
 import { AssociationsListComponent } from './associations-list/associations-list.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'users/:id/edit', component: UserFormComponent, canActivate: [AuthGuard] },
   { path: 'associations', component: AssociationsListComponent, canActivate: [AuthGuard] },
   { path: 'associations/:name', component: AssociationDetailComponent, canActivate: [AuthGuard] },
+  { path: 'associations/:name/edit', component: AssociationFormComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home' },
 ];
