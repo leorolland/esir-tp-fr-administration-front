@@ -29,6 +29,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UserFormComponent } from './user-form/user-form.component';
+import { AssociationFormComponent } from './association-form/association-form.component';
+import { DynamicFormMemberComponentComponent } from './association-form/dynamic-form-member-component/dynamic-form-member-component.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     HomeComponent,
     AssociationDetailComponent,
     UserFormComponent,
+    AssociationFormComponent,
+    DynamicFormMemberComponentComponent,
   ],
   imports: [
     MatDialogModule,
