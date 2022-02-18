@@ -1,0 +1,5 @@
+<div [formGroup]="form">
+  <label [attr.for]="member.firstname + member.lastname">{{member.firstname}} {{member.lastname}}</label>
+    <input [formControlName]="member.firstname + member.lastname" [id]="member.firstname + member.lastname" type="text"> X
+  <!-- <div class="errorMessage" *ngIf="!isValid">{{member.firstname}} is invalid</div> -->
+</div>

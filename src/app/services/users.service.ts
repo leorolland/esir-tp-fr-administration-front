@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { filter, first, map } from 'rxjs/operators';
 import { User } from '../types/User';
 import { BASE_URL } from './baseUrl';
 
@@ -29,6 +30,14 @@ export class UsersService {
     } else {
       return this.http.post<User>(`${BASE_URL}/users`, user)
     }
+  }
+
+  findId(firstname: string, lastname: string): Observable<number> {
+    return this.http.get<User[]>(`${BASE_URL}/users`)
+      // Keep only the corresponding user
+      .pipe(map(users => users.filter(u => u.firstname == firstname && u.lastname == lastname)))
+      // Return his id
+      .pipe(map(filteredUsers => filteredUsers[0].id))
   }
 
 }

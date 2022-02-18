@@ -13,7 +13,8 @@ ul{
 }
 
 #right li{
-  margin-right: 3vw;
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
   float: right;
   height: 22px;
   align-items: center;
@@ -33,8 +34,10 @@ img{
 }
 
 button{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 2.4vh;
   float: right;
-  width:110px;
+  width:130px;
 }
 
 a{
@@ -42,10 +45,6 @@ a{
   text-decoration: none;
   color: rgb(0,85,164);
   text-transform: uppercase;
-}
-
-.active{
-  font-weight: bold; 
 }
 
 a:after {    
